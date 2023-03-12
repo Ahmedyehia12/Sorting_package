@@ -1,0 +1,3 @@
+C:/Users/Administrator/Documents/GitHub/Sorting_package/cmake-build-debug/CMakeFiles/Sorting_package.dir
+C:/Users/Administrator/Documents/GitHub/Sorting_package/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/Administrator/Documents/GitHub/Sorting_package/cmake-build-debug/CMakeFiles/rebuild_cache.dir
