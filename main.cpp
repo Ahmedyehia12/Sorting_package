@@ -15,13 +15,9 @@ void insertionSort(T arr[],int n){
     template <typename T>
     void countingSort (T arr[],int n){
         int max = arr[0];
-        int min = arr[0];
         for(int i=1;i<n;i++){
             if(arr[i]>max){
                 max = arr[i];
-            }
-            if(arr[i]<min){
-                min = arr[i];
             }
         }
         vector<int>count(max+1,0);
@@ -40,13 +36,40 @@ void insertionSort(T arr[],int n){
             arr[i] = result[i];
         }
     }
+    template<typename T>
+    void shellSort(T arr[],int n){
+        for(int gap = n/2;gap>0;gap/=2){
+            for(int i=gap;i<n;i++){
+                int temp = arr[i];
+                int j;
+                for(j=i;j>=gap && temp<arr[j-gap];j-=gap){
+                    arr[j] = arr[j-gap];
+                }
+                arr[j] = temp;
+            }
+        }
+    }
 }
 using namespace sortlib;
 int main(){
-    int arr[] = {4,1,0,4,3};
+    int arr[] = {4,1,3,4,3};
     countingSort(arr,5);
     for(int i=0;i<5;i++){
         cout<<arr[i]<<" ";
+    }
+    cout<<endl;
+    cout<<endl;
+    int arr2[] = {4,1,3,4,3};
+    insertionSort(arr2,5);
+    for(int i=0;i<5;i++){
+        cout<<arr2[i]<<" ";
+    }
+    cout<<endl;
+    cout<<endl;
+    int arr3[] = {4,1,3,4,3};
+    shellSort(arr3,5);
+    for(int i=0;i<5;i++){
+        cout<<arr3[i]<<" ";
     }
     return 0;
 
