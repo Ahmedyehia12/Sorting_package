@@ -1,5 +1,4 @@
-#include<iostream>
-#include<vector>
+#include <bits/stdc++.h>
 using namespace std;
 namespace sortlib{
     template <typename T>
@@ -10,7 +9,8 @@ void insertionSort(T arr[],int n){
             arr[j] = arr[j-1];
         }
         arr[j] = temp;
-    }}
+    }
+}
 
     template <typename T>
     void countingSort (T arr[],int n){
@@ -50,27 +50,54 @@ void insertionSort(T arr[],int n){
         }
     }
 }
+template<typename T>
+void generate_array(T arr[],int n){
+    for(int i=0;i<n;i++){
+        if(typeid(T) == typeid(char)){
+            arr[i] = rand()%26 + 'a';
+        }
+        else
+        arr[i] = rand()%1000;
+    }
+
+}
+
 using namespace sortlib;
+using namespace std::chrono;
+class Test{
+    public:
+    template <typename T>
+    void test_insertionSort(T arr[] , int n){
+        auto start = high_resolution_clock::now();
+        insertionSort(arr,n);
+        auto stop = high_resolution_clock::now();
+        auto duration = duration_cast<microseconds>(stop - start);
+        for(int i=0;i<n;i++){
+            cout<<arr[i]<<' ';
+        }
+        cout<<endl;
+        cout<<"Time taken by function: "<<double(double(duration.count())/1000)<<" milliseconds"<<endl;
+    }
+    template <typename T>
+    void test_countSort(T arr[],int n){
+        auto start = high_resolution_clock::now();
+        countingSort(arr,n);
+        auto stop = high_resolution_clock::now();
+        auto duration = duration_cast<microseconds>(stop - start);
+        for(int i=0;i<n;i++){
+            cout<<arr[i]<<' ';
+        }
+        cout<<endl;
+        cout<<"Time taken by function: "<<double(double(duration.count())/1000)<<" milliseconds"<<endl;
+    }
+};
 int main(){
-    int arr[] = {4,1,3,4,3};
-    countingSort(arr,5);
-    for(int i=0;i<5;i++){
-        cout<<arr[i]<<" ";
-    }
-    cout<<endl;
-    cout<<endl;
-    int arr2[] = {4,1,3,4,3};
-    insertionSort(arr2,5);
-    for(int i=0;i<5;i++){
-        cout<<arr2[i]<<" ";
-    }
-    cout<<endl;
-    cout<<endl;
-    int arr3[] = {4,1,3,4,3};
-    shellSort(arr3,5);
-    for(int i=0;i<5;i++){
-        cout<<arr3[i]<<" ";
-    }
+    int arr[1000];
+    generate_array(arr,1000);
+    Test test;
+    test.test_insertionSort(arr,1000);
+
+
     return 0;
 
 
