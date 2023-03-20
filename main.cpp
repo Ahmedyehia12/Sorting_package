@@ -2,6 +2,8 @@
 using namespace std;
 namespace sortlib{
     template <typename T>
+    ///@author: Ahmed Yehia
+    /// time complexity:  best case: O(n) , worst case: O(n^2) , average case: O(n^2)
 void insertionSort(T arr[],int n){
     for(int i=1,j;i<n;i++){
         int temp = arr[i];
@@ -13,6 +15,8 @@ void insertionSort(T arr[],int n){
 }
 
     template <typename T>
+    ///@ Author: Ahmed Yehia
+    /// time complexity: O(n+k) , k is the range of the numbers
     void countingSort (T arr[],int n){
         int max = arr[0];
         for(int i=1;i<n;i++){
@@ -37,6 +41,8 @@ void insertionSort(T arr[],int n){
         }
     }
     template<typename T>
+    ///@ Author: Ahmed Yehia
+    /// time complexity:  best case: O(n) , worst case: O(n^1.5) , average case: O(n^2)
     void shellSort(T arr[],int n){
         for(int gap = n/2;gap>0;gap/=2){
             for(int i=gap;i<n;i++){
@@ -53,7 +59,7 @@ void insertionSort(T arr[],int n){
 template<typename T>
 void generate_array(T arr[],int n){
     for(int i=0;i<n;i++){
-        if(typeid(T) == typeid(char)){
+         if(typeid(T) == typeid(char)){
             arr[i] = rand()%26 + 'a';
         }
         else
@@ -90,12 +96,28 @@ class Test{
         cout<<endl;
         cout<<"Time taken by function: "<<double(double(duration.count())/1000)<<" milliseconds"<<endl;
     }
+
+    template<typename T>
+    void test_shellSort(T arr[],int n){
+        auto start = high_resolution_clock::now();
+        shellSort(arr,n);
+        auto stop = high_resolution_clock::now();
+        auto duration = duration_cast<microseconds>(stop - start);
+        for(int i=0;i<n;i++){
+            cout<<arr[i]<<' ';
+        }
+        cout<<endl;
+        cout<<"Time taken by function: "<<double(double(duration.count())/1000)<<" milliseconds"<<endl;
+    }
 };
 int main(){
-    int arr[1000];
-    generate_array(arr,1000);
+
+
+    int arr[50000];
+    generate_array(arr,50000);
     Test test;
-    test.test_insertionSort(arr,1000);
+    test.test_countSort(arr,50000);
+
 
 
     return 0;
