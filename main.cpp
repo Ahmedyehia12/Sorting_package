@@ -2,6 +2,9 @@
 using namespace std;
 namespace sortlib {
     template <typename T>
+    ///@ Author: Shahd Abdel-Moamen
+    ///Time complexity: best case: O(n) worst case:O(n^2) average case: O(n^2)
+
     void BubbleSort(T *arr, int size) {
         for (int i = 0; i < size ; i++) {
             for (int j = i+1; j < size ; j++) {
@@ -13,6 +16,8 @@ namespace sortlib {
         }
     }
     template <typename T>
+    ///@ Author: Shahd Abdel-Moamen
+    ///Time complexity: best case: O(nLog(n)) worst case:O(nLog(n)) average case: O(nLog(n))
     void Merge(T arr[],int l, int r,int mid){
         T temp[r-l+1];
         int i = l;
