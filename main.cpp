@@ -15,6 +15,35 @@ namespace sortlib {
             swap(arr[i], arr[minIndex]);
         }
     }
+
+    template<typename T>
+    int partition(T arr[], int lowerBound, int upperBound){
+        T pivot = arr[lowerBound];
+        int start = lowerBound;
+        int end = upperBound;
+        while(start<end){
+            while(arr[start] <= pivot){
+                start--;
+            }
+            while(arr[end] > pivot){
+                end --;
+            }
+            if(start < end) {
+                swap(arr[start], arr[end]);
+            }
+        }
+        swap(arr[lowerBound], arr[end]);
+        return end;
+    }
+
+    template<typename T>
+    void quickSort(T arr[], int lowerBound, int upperBound){
+        if(lowerBound < upperBound){
+            int location = partition(arr, lowerBound, upperBound);
+            quickSort(arr, lowerBound, location -1);
+            quickSort(arr, location + 1, upperBound);
+        }
+    }
 }
 
     string randomString(int ch) {
@@ -72,45 +101,21 @@ namespace sortlib {
             cout << "Time taken by selection sort: " << double(double(duration.count()) / 1000) << " milliseconds"<< endl;
         }
 
+        template<typename T>
+        void testQuickSort(T arr[], int n){
+            auto start = high_resolution_clock::now();
+            quickSort(arr, 0, n-1);
+            auto stop = high_resolution_clock::now();
+            auto duration = duration_cast<microseconds>(stop - start);
+            cout << endl;
+            cout << "Time taken by quicksort: " << double(double(duration.count()) / 1000) << " milliseconds"<< endl;
+        }
+
     };
 
 
     using namespace sortlib;
 
     int main() {
-        srand(time(NULL));
-        string dataType;
-        int size;
-        Test test;
-        cout << "Enter the type of array you want: ";
-        cin >> dataType;
-        cout << "Enter the size of array: ";
-        cin >> size;
-        if (dataType == "string") {
-            string arr[size];
-            generateStringArray(arr, size);
-            //place the test object and call the sort algorithm you want
-            displayArray(arr, size);
-        } else if (dataType == "int") {
-            int arr[size];
-            generate_array(arr, size, 1, 1000);
-            test.testSelectionSort(arr, size);
-            displayArray(arr, size);
-        } else if (dataType == "double") {
-            double arr[size];
-            srand(0);
-            generate_array(arr, size, 1, 100);
-            //place the test object and call the sort algorithm you want
-            displayArray(arr, size);
-        } else if (dataType == "float") {
-            float arr[size];
-            generate_array(arr, size, 1, 100);
-            //place the test object and call the sort algorithm you want
-            displayArray(arr, size);
-        } else if (dataType == "char") {
-            char arr[size];
-            generate_array(arr, size, 1, 100);
-            //place the test object and call the sort algorithm you want
-            displayArray(arr, size);
-        }
+
     }
