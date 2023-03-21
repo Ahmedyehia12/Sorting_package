@@ -23,7 +23,7 @@ namespace sortlib {
         int end = upperBound;
         while(start<end){
             while(arr[start] <= pivot){
-                start--;
+                start++;
             }
             while(arr[end] > pivot){
                 end --;
