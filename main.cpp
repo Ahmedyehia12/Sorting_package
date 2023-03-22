@@ -56,6 +56,7 @@ void insertionSort(T arr[],int n){
         }
     }
 }
+
 template<typename T>
 void generate_array(T arr[],int n){
     for(int i=0;i<n;i++){
