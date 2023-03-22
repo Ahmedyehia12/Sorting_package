@@ -9,7 +9,7 @@ namespace sortlib{
     void insertionSort(T arr[],int n){
         for(int i=1,j;i<n;i++){
             int temp = arr[i];
-            for(j=i;j>0&&temp<arr[j-1];j--){
+            for(j=i;j>0 && temp<arr[j-1];j--){
                 arr[j] = arr[j-1];
             }
             arr[j] = temp;
@@ -43,7 +43,7 @@ namespace sortlib{
     }
     template<typename T>
     ///@ Author: Ahmed Yehia
-    /// time complexity:  best case: O(n) , worst case: O(n^1.5) , average case: O(n^2)
+    /// time complexity:  best case: O(n) , Average Case: O(n^1.5) , Worst case: O(n^2)
     void shellSort(T arr[],int n){
         for(int gap = n/2;gap>0;gap/=2){
             for(int i=gap;i<n;i++){
